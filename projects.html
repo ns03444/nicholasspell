@@ -64,55 +64,46 @@
     <main class="main">
       <div class="content">
         <h1 class="page-title">Projects</h1>
-        <p class="page-lede">Production systems first. Earlier personal work is at the bottom.</p>
 
         <div class="projects">
           <article class="card project" id="swim">
-            <p class="project-kicker">Enterprise case study</p>
-            <h2><a href="swim.html">SWIMv2 — Enterprise Network Software Image Management</a></h2>
-            <p>An enterprise full-stack automation platform for managing and executing network software image upgrades across multiple vendors at large scale. SWIM coordinates image copy, staging, validation, HA-aware upgrades, logging, and ServiceNow change management — including runs of 1,000+ devices in a single maintenance window.</p>
-            <p>I helped lead the product and engineering direction: roadmap, PBIs, contractor coordination, implementation patterns, and direct contributions to the codebase. F5 established the API-driven patterns; the platform then expanded to Cisco IOS / IOS-XE / NX-OS, Citrix/NetScaler, Palo Alto, Arista, and Versa.</p>
+            <p class="project-kicker">Case study</p>
+            <h2><a href="swim.html">SWIMv2 — Software Image Management</a></h2>
+            <p>Full-stack upgrade platform. Multi-vendor. 1,000+ devices per window. ServiceNow in the loop. I helped lead product and engineering.</p>
             <div class="cta-row">
-              <a class="btn" href="swim.html">Read the case study</a>
+              <a class="btn" href="swim.html">Case study</a>
             </div>
           </article>
 
           <article class="card project" id="connect">
-            <p class="project-kicker">Enterprise platform</p>
-            <h2>Connect — Enterprise SSH / Network Access Platform</h2>
-            <p>A replacement for an older network-access path (HPNA), built as a set of Linux/systemd components rather than a single script. Connect combines an SSH server/socket, secrets handling, an interactive shell, TACACS+/ClearPass authentication, PTY session recording, messaging/streaming, and Splunk integration.</p>
-            <p>The broader story: a network-access platform that operators actually use — authentication, interactive terminal access, recording, and observability — not just a jump host with extra steps.</p>
+            <h2>Connect — SSH Access Platform</h2>
+            <p>HPNA replacement. Linux/systemd, ClearPass/TACACS+, session recording, Splunk.</p>
           </article>
 
           <article class="card project" id="libraries">
-            <p class="project-kicker">Shared software</p>
-            <h2>Network Automation Libraries / SDK work</h2>
-            <p>Python libraries and SDKs for device operations, orchestration, and reusable automation patterns. This is the layer underneath product work: common interfaces for reachability, API-driven vendor operations, and the pieces that keep SWIM and related tools from becoming a pile of copy-pasted scripts.</p>
-            <p>Earlier in the same vein: SD-WAN orchestration helpers and shared modules that started as task automation and later informed how SWIMv2 encapsulates vendor behavior.</p>
+            <h2>Network Automation Libraries</h2>
+            <p>Shared Python SDKs for device ops and orchestration. Used under SWIM and related tools.</p>
           </article>
 
           <article class="card project" id="confluence">
-            <p class="project-kicker">Internal tooling</p>
             <h2>Markdown / Confluence Automation</h2>
-            <p>A Docker/Python publisher that turns markdown into Confluence pages so documentation can live in git and still land where operators read it. Related work includes a network diagram generator for automated doc publishing. Small compared with SWIM — useful as evidence that the job is software around operations, not only device upgrades.</p>
+            <p>Git markdown → Confluence. Docker/Python. Also a network diagram publisher.</p>
           </article>
         </div>
 
-        <p class="section-label">Earlier projects</p>
+        <p class="section-label">Earlier</p>
         <div class="projects">
           <article class="card project">
-            <h2>Django Application: Content Aggregator</h2>
-            <p>College capstone: a Django site that aggregated technology-related market news and performance data, with pandas/Bokeh charts and a scheduled refresh. It is how I learned to ship a full web app. It is not the center of the portfolio anymore.</p>
+            <h2>Django Content Aggregator</h2>
+            <p>College capstone. Market news site with scheduled refresh.</p>
           </article>
-
           <article class="card project">
-            <h2>Flask Application: Blog Website</h2>
-            <p>A Flask app with authentication, a database, file uploads, and templated posts. The current public site is a static rewrite of that idea — no login, no editor — because the work that matters now is the enterprise platforms, not a CMS.</p>
+            <h2>Flask Blog</h2>
+            <p>Auth, uploads, posts. This site is the static rewrite.</p>
           </article>
-
           <article class="card project">
-            <h2>Python Package: Network Automation Utilities</h2>
-            <p>Early toolkit work around common network tasks. The interesting continuation of that idea is the internal libraries behind SWIM and Connect, not a generic utilities package.</p>
+            <h2>Network Automation Utilities</h2>
+            <p>Early Python toolkit. Later work lives in the internal libraries.</p>
           </article>
         </div>
       </div>

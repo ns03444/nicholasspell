@@ -71,25 +71,10 @@
             </p>
           </header>
           <div class="article-body">
-            <h1>What I Learned Automating 1,000+ Network Upgrades</h1>
-            <p>A hundred devices will forgive a lot of sloppy automation. A thousand devices in one maintenance window will not. That number is the strongest proof point for SWIMv2, and it changed how I think about the work.</p>
-            <p>At that scale, the interesting failures are not syntax errors in a script. They are reachability, partial progress, vendor quirks, HA pairs that are not in the state you assumed, and the fact that humans cannot watch every session.</p>
-
-            <h2>Parallelism is the product</h2>
-            <p>If you treat the network as a sequence of manually executed devices, you will miss the window. The orchestration layer has to run work concurrently, keep per-device state, and still make the run understandable. Operators need to know which boxes are copying images, which are waiting on validation, which failed because they were unreachable, and which are done.</p>
-            <p>That is why SWIM is a full-stack application with background jobs, not a for-loop in a terminal multiplexer. Long-running operations do not belong in a web request. They belong in an orchestrator that can survive the operator closing the browser.</p>
-
-            <h2>Validate before you spend the window</h2>
-            <p>The cheapest failure is the one that happens before you start. Disk space, licenses, image integrity, version targets, HA health, backups — these are not niceties. They are how you avoid discovering a blocker on device 400 after you have already committed the night.</p>
-            <p>Pre-validation and post-validation are first-class phases in the workflow for that reason. The upgrade command is the middle of the story, not the whole story.</p>
-
-            <h2>Failure modes have to be named</h2>
-            <p>When something fails on device 873, “error” is not a useful category. Connection failures are different from authentication failures, which are different from “the vendor API rejected this image.” If you collapse those together, people spend the window debugging the wrong layer.</p>
-            <p>The same is true of history. If you cannot show what happened on a device — the phase, the output, the result — you have automated the change and un-automated the incident that follows it.</p>
-
-            <h2>Scale is a business result</h2>
-            <p>1,000+ devices in a night is a technical achievement only because it replaces an expensive operational process. Contractor effort, engineering time, and the risk of missing a window are the actual outputs. The software is how you get there. That is the lesson I keep coming back to: enterprise automation is judged by whether the operation still needs a crowd.</p>
-            <p>The architecture behind this is on the <a href="../swim.html">SWIMv2 case study</a>.</p>
+            <h1>Automating 1,000+ Upgrades</h1>
+            <p>A hundred devices forgive sloppy automation. A thousand in one window do not.</p>
+            <p>Run in parallel. Keep per-device state. Fail cheap — validate disk, license, image, and HA before you spend the night. Name failures: unreachable vs auth vs vendor API. Keep history, or the next incident has no trail.</p>
+            <p>Scale is the business result: less contractor time, less crowd on the change. <a href="../swim.html">SWIMv2 case study</a>.</p>
           </div>
         </article>
       </div>

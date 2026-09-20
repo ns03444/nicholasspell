@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Building SWIMv2 – Nicholas Spell</title>
+  <title>SWIMv2 – Nicholas Spell</title>
   <meta name="description" content="Case study: SWIMv2, an enterprise network software image management platform that automates upgrades across 1,000+ devices and multiple vendors.">
   <meta name="theme-color" content="#0f0f0f">
   <link rel="icon" href="assets/favicon.ico">
@@ -63,8 +63,8 @@
 
     <main class="main">
       <div class="content">
-        <h1 class="page-title">Building SWIMv2</h1>
-        <p class="page-lede">Enterprise network upgrade automation — a full-stack platform, not a script.</p>
+        <h1 class="page-title">SWIMv2</h1>
+        <p class="page-lede">Enterprise network upgrade automation.</p>
 
         <div class="proof" aria-label="SWIM impact">
           <div class="proof-item">
@@ -83,27 +83,17 @@
 
         <div class="stack">
           <section class="card">
-            <p class="project-kicker">What it is</p>
-            <h2>Software Image Management, rebuilt as a product</h2>
-            <p>SWIM is Software Image Management. SWIMv2 is an enterprise platform for automating the end-to-end process of upgrading network infrastructure. It is a full-stack web application — not a playbook collection — with a user interface, backend services, background orchestration, image management, validation, logging, history, and enterprise change-management integration.</p>
-            <p>I helped design the platform, set technical direction, break the work into executable pieces, coordinate contractor development, and contribute directly to the code. The goal was a reusable automation product, not a pile of vendor-specific scripts.</p>
+            <h2>What it is</h2>
+            <p>Software Image Management. A full-stack platform for network upgrades — UI, backend, orchestration, validation, logs, history, and ServiceNow. I helped design it, set direction, and write the code.</p>
           </section>
 
           <section class="card">
-            <h2>The problem</h2>
-            <p>Large-scale network upgrades traditionally require substantial manual engineering effort, coordination, maintenance-window management, and contractor involvement. Work is device-by-device, vendor-by-vendor, and tightly coupled to whoever happens to be on the change that night.</p>
-            <p>That does not scale. It is expensive, hard to repeat, and difficult to observe when something goes wrong at 2 a.m. across hundreds of devices.</p>
+            <h2>Problem</h2>
+            <p>Upgrades were manual, vendor-specific, and contractor-heavy. That does not scale to 1,000 devices in a night.</p>
           </section>
 
           <section class="card">
-            <h2>The idea</h2>
-            <p>Create a centralized automation platform that can perform the operational workflow end-to-end: pre-validation, image movement, staging, upgrade, post-validation, and change-ticket lifecycle — in parallel, across vendors, with a record of what happened.</p>
-            <p>SWIMv1 had been oriented around Client WAN / Cisco workflows and Ansible-heavy patterns. It was useful, but it was not designed for broad multi-vendor scale. SWIMv2 started over as software architecture: APIs, background jobs, reusable workflow phases, and vendor-specific behavior encapsulated behind common interfaces.</p>
-          </section>
-
-          <section class="card">
-            <h2>The platform</h2>
-            <p>A web application backed by distributed/background orchestration for large-scale parallel network operations.</p>
+            <h2>Platform</h2>
             <div class="arch" aria-label="SWIM architecture">
               <span class="arch-node">Web app</span>
               <span class="arch-arrow" aria-hidden="true">→</span>
@@ -111,55 +101,28 @@
               <span class="arch-arrow" aria-hidden="true">→</span>
               <span class="arch-node">Orchestration</span>
               <span class="arch-arrow" aria-hidden="true">→</span>
-              <span class="arch-node">Device automation</span>
-              <span class="arch-arrow" aria-hidden="true">→</span>
-              <span class="arch-node">Network devices</span>
+              <span class="arch-node">Devices</span>
             </div>
-            <p>ServiceNow sits beside the workflow, not after it. The platform can open a change, associate an execution, update the ticket as work proceeds, and close it when the run completes. That is the difference between automating device commands and automating the operational process around a network change.</p>
+            <p>ServiceNow is in the run: open the change, update it, close it.</p>
           </section>
 
           <section class="card">
-            <h2>The workflow</h2>
-            <p>A typical upgrade is a sequence of phases. Common structure is reused; vendor-specific behavior lives inside each phase.</p>
+            <h2>Workflow</h2>
             <div class="workflow">
-              <div class="workflow-step">
-                <strong>Pre-validation</strong>
-                Confirm the device is healthy and meets requirements before maintenance.
-              </div>
-              <div class="workflow-step">
-                <strong>HA preparation</strong>
-                For high-availability pairs, prepare and validate the standby before touching production.
-              </div>
-              <div class="workflow-step">
-                <strong>Image copy</strong>
-                Transfer the required software image and supporting files to the infrastructure.
-              </div>
-              <div class="workflow-step">
-                <strong>Pre-maintenance</strong>
-                Capture state, backups, statistics, and other pre-change information.
-              </div>
-              <div class="workflow-step">
-                <strong>Stage</strong>
-                Prepare the image and configuration on the target device.
-              </div>
-              <div class="workflow-step">
-                <strong>Upgrade</strong>
-                Execute the software upgrade itself.
-              </div>
-              <div class="workflow-step">
-                <strong>Post-maintenance</strong>
-                Verify version, health, sync, connectivity, and required conditions.
-              </div>
-              <div class="workflow-step">
-                <strong>History</strong>
-                Record what happened and expose logs and results in the application.
-              </div>
+              <div class="workflow-step"><strong>Pre-validation</strong></div>
+              <div class="workflow-step"><strong>HA prep</strong></div>
+              <div class="workflow-step"><strong>Image copy</strong></div>
+              <div class="workflow-step"><strong>Pre-maintenance</strong></div>
+              <div class="workflow-step"><strong>Stage</strong></div>
+              <div class="workflow-step"><strong>Upgrade</strong></div>
+              <div class="workflow-step"><strong>Post-maintenance</strong></div>
+              <div class="workflow-step"><strong>History</strong></div>
             </div>
           </section>
 
           <section class="card">
-            <h2>Multi-vendor by design</h2>
-            <p>F5 was the first implementation because it was a manageable place to establish architecture and patterns — including API-driven operations rather than SSH-only scripting. Those patterns then expanded to additional vendors. The point is a scalable platform, not a one-off tool tied to a single network OS.</p>
+            <h2>Multi-vendor</h2>
+            <p>F5 first (API-driven). Then the rest. Shared workflow, vendor-specific modules.</p>
             <div class="vendors">
               <span class="vendor">Cisco IOS</span>
               <span class="vendor">Cisco IOS-XE</span>
@@ -173,62 +136,36 @@
           </section>
 
           <section class="card">
-            <h2>From SWIMv1 to SWIMv2</h2>
+            <h2>v1 → v2</h2>
             <div class="split">
               <div>
                 <h3>SWIMv1</h3>
-                <p>Focused on Client WAN / Cisco environments. Relied heavily on Ansible, YAML/Jinja, and scripting patterns. Useful in a narrower domain, but not built for broad multi-vendor reuse.</p>
+                <p>Cisco / Client WAN. Ansible and scripts. Narrow.</p>
               </div>
               <div>
                 <h3>SWIMv2</h3>
-                <p>A software-oriented platform: multi-vendor support, API-driven automation, background orchestration, parallel execution, validation, observability, and ServiceNow integration. Built to scale.</p>
+                <p>Multi-vendor app. APIs, parallel jobs, ServiceNow. Built to scale.</p>
               </div>
             </div>
           </section>
 
           <section class="card">
-            <h2>Engineering challenges</h2>
-            <p>The interesting problems were not “run this command on a box.” They were reliability and coordination at scale.</p>
+            <h2>Hard parts</h2>
             <div class="challenges">
-              <div class="challenge">
-                <strong>Parallel execution</strong>
-                <span>Many devices in one window, without treating the network as a serial checklist.</span>
-              </div>
-              <div class="challenge">
-                <strong>Reachability &amp; errors</strong>
-                <span>Separate connection failures from authentication failures and generic operational errors.</span>
-              </div>
-              <div class="challenge">
-                <strong>Vendor differences</strong>
-                <span>Reuse the workflow; encapsulate image copy, HA, and upgrade behavior per platform.</span>
-              </div>
-              <div class="challenge">
-                <strong>HA / failover</strong>
-                <span>Active-standby pairs need preparation, sync, and ordered upgrades — not a blunt reboot.</span>
-              </div>
-              <div class="challenge">
-                <strong>Validation</strong>
-                <span>Disk space, licenses, image integrity, version checks, and post-change health.</span>
-              </div>
-              <div class="challenge">
-                <strong>Change management</strong>
-                <span>Tickets are part of the run: open, update, close — not a separate spreadsheet after the fact.</span>
-              </div>
-              <div class="challenge">
-                <strong>Long-running work</strong>
-                <span>Upgrades do not fit in a web request. Orchestration has to own state, logs, and history.</span>
-              </div>
-              <div class="challenge">
-                <strong>Observability</strong>
-                <span>Operators need execution output and a record of what happened on every device.</span>
-              </div>
+              <div class="challenge"><strong>Parallel execution</strong></div>
+              <div class="challenge"><strong>Reachability &amp; errors</strong></div>
+              <div class="challenge"><strong>Vendor differences</strong></div>
+              <div class="challenge"><strong>HA / failover</strong></div>
+              <div class="challenge"><strong>Validation</strong></div>
+              <div class="challenge"><strong>Change management</strong></div>
+              <div class="challenge"><strong>Long-running jobs</strong></div>
+              <div class="challenge"><strong>Logs &amp; history</strong></div>
             </div>
           </section>
 
           <section class="card">
-            <h2>Outcome</h2>
-            <p>A reusable enterprise platform rather than a collection of one-off scripts. The same system can copy images, stage upgrades, validate devices, run in parallel, and close the change — across vendors, at a scale of 1,000+ devices in a night.</p>
-            <p>That is the career story: moving from network scripting to building automation products that solve expensive operational problems.</p>
+            <h2>Result</h2>
+            <p>A reusable platform, not a pile of scripts. 1,000+ devices in a night.</p>
             <div class="cta-row">
               <a class="btn" href="posts/building-swimv2.html">Read the write-up</a>
               <a class="btn" href="projects.html">All projects</a>

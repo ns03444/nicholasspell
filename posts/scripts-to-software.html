@@ -71,21 +71,10 @@
             </p>
           </header>
           <div class="article-body">
-            <h1>From Network Scripts to Production Software</h1>
-            <p>I still know Ansible. I still know how to sit on a device and make it do the right thing. That is not what I want a visitor to this site to think I do all day.</p>
-            <p>The useful career story is the move from “network scripting” to “building automation products.” SWIMv1 to SWIMv2 is the cleanest example I have of that move.</p>
-
-            <h2>What the first version taught me</h2>
-            <p>SWIMv1 lived close to Client WAN and Cisco workflows. Playbooks, templates, scripts — the standard toolkit. It automated real work. It also encoded too many assumptions about one domain into the shape of the tool. When the requirement became multi-vendor scale, the old shape fought back.</p>
-            <p>That phase was not wasted. You cannot design a platform for operations you have never done by hand or by playbook. You can get stuck there, though, and keep adding YAML until the system is unownable.</p>
-
-            <h2>What the second version required</h2>
-            <p>SWIMv2 needed the boring virtues of application software: a UI people can use, backend services, APIs, background jobs, parallel execution, validation, observability, and integration with the systems the enterprise already uses to approve work. It needed a roadmap and PBIs, not a folder of one-off jobs. It needed someone to sit between stakeholders, contractors, and the codebase and keep the architecture from dissolving into special cases.</p>
-            <p>That is a different job description than “writes automation.” It is closer to software-oriented infrastructure engineering. You still need the network depth. You also need to think in interfaces, state, and products.</p>
-
-            <h2>How to tell the difference</h2>
-            <p>If the artifact is a script, the user is you. If the artifact is a platform, the users are operators who were not in the design review. They need a workflow, a ticket, a log, and a way to run 1,000 devices without inventing a process that night.</p>
-            <p>I do not claim I built every line. I do claim I helped lead the direction and I write the software. Both halves are the point. The rest of this site — Connect, libraries, even the older Django and Flask work — is evidence of the same trajectory, with SWIM as the proof that it reached production scale.</p>
+            <h1>Scripts to Software</h1>
+            <p>I still know Ansible. That is not the job anymore.</p>
+            <p>SWIMv1: Cisco, playbooks, scripts. Useful. Could not scale multi-vendor.</p>
+            <p>SWIMv2: UI, APIs, background jobs, validation, ServiceNow. Roadmap and PBIs, not a folder of one-offs. I helped lead direction and write the code. Script users are you. Platform users are operators who were not in the design review.</p>
           </div>
         </article>
       </div>

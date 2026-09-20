@@ -71,41 +71,12 @@
             </p>
           </header>
           <div class="article-body">
-            <h1>Building SWIMv2: Automating Network Upgrades at Enterprise Scale</h1>
-            <p>The story is not “I wrote a Python tool for upgrading devices.” The story is that I helped build an enterprise automation platform capable of coordinating software upgrades across more than 1,000 network devices during a maintenance window.</p>
-            <p>That distinction is the whole job. A tool runs a command. A platform owns the operational process: who is in the window, whether the box is healthy, whether the image is actually on the device, whether the HA peer is ready, whether the change ticket is open, and what the logs say when something fails at 2 a.m.</p>
-
-            <h2>The expensive problem</h2>
-            <p>Network software upgrades are still one of the most labor-heavy operations in a large enterprise. They consume maintenance windows, contractor hours, and the attention of people who should be designing the next change instead of babysitting the current one. The work is familiar: copy an image, stage it, validate disk and licenses, upgrade, confirm version, handle failover, update the ticket, do it again on the next device.</p>
-            <p>At small scale, a good engineer with a terminal can survive that. At enterprise scale, it becomes a coordination problem. You cannot staff your way through 1,000 devices in a night. You need software that makes the workflow repeatable.</p>
-
-            <h2>Why SWIMv1 was not enough</h2>
-            <p>There was already an older SWIM. It was useful in a Client WAN / Cisco-shaped world, and it leaned on Ansible, YAML, Jinja, and scripting patterns that a lot of network automation careers start with. I came up through that world. It teaches you the devices. It does not give you a product.</p>
-            <p>SWIMv1 was not designed for broad multi-vendor scale. Adding another platform meant stretching a model that assumed too much about Cisco workflows. The interesting work in v2 was not “write more playbooks.” It was treating image management as an application: a web UI, backend services, background orchestration, parallel execution, validation, history, and change management as a first-class part of the run.</p>
-
-            <h2>What we actually built</h2>
-            <p>SWIMv2 is Software Image Management as a full-stack system. Operators work in a web application. The application does not do the long work inside an HTTP request. A backend orchestration layer owns reachability, pre-validation, image operations, upgrades, post-validation, execution state, logging, and results.</p>
-            <p>The workflow is phased on purpose:</p>
-            <ul>
-              <li>Pre-validation — is this device even a candidate?</li>
-              <li>HA preparation — if there is a peer, is it ready?</li>
-              <li>Image copy — get the bits where they need to be.</li>
-              <li>Pre-maintenance — capture state and backups before you touch production.</li>
-              <li>Stage — prepare the image on the target.</li>
-              <li>Upgrade — execute the change.</li>
-              <li>Post-maintenance — prove the version, health, and sync you claimed you would deliver.</li>
-              <li>History — leave a record someone can read tomorrow.</li>
-            </ul>
-            <p>ServiceNow is in that loop. The platform can open the change, associate the execution, update the ticket as the run proceeds, and close it when the workflow completes. Automating CLI without automating the change lifecycle still leaves a pile of human glue.</p>
-
-            <h2>Start with one vendor, then generalize</h2>
-            <p>F5 was the first implementation because it was a manageable place to establish the architecture. The F5 work is API-driven — image upload and copy, staging, upgrade, HA/active-standby handling, license and disk checks, image integrity, backups, version verification — and it became the pattern for treating vendor specifics as modules instead of a new script each time.</p>
-            <p>From there the platform expanded across Cisco IOS, IOS-XE, NX-OS, Versa, Citrix/NetScaler, Palo Alto, and Arista. Citrix, for example, is not “the F5 code with the names changed.” Guest targeting on SDX, authentication versus connectivity failures, and image-copy versus full upgrade are different problems. The reusable piece is the workflow and the orchestration, not the vendor SDK.</p>
-
-            <h2>What I actually did</h2>
-            <p>I did not receive a finished spec and type until the ticket closed. I helped lead SWIM as technical/product work: roadmap, PBIs, breaking large capabilities into executable pieces, coordinating contractor development, working with SMEs, establishing implementation patterns, and contributing to the code. That combination matters. Building software and steering the product are different skills, and this platform needed both.</p>
-            <p>The result is a reusable enterprise platform rather than a collection of one-off scripts. It has run upgrades involving 1,000+ devices in a single night. It reduced millions of dollars in contractor and operational effort — not because a script is clever, but because the operational process itself became software.</p>
-            <p>There is a longer visual walkthrough of the architecture and workflow on the <a href="../swim.html">SWIMv2 case study</a>.</p>
+            <h1>Building SWIMv2</h1>
+            <p>Not a Python script. An enterprise platform that upgrades 1,000+ devices in one window.</p>
+            <p>SWIMv1 was Cisco / Client WAN and Ansible. Fine for that domain. Not multi-vendor, not a product.</p>
+            <p>SWIMv2 is a full-stack app: UI, backend, background jobs, validation, logs, history. Workflow is phased — pre-validate, HA prep, copy, stage, upgrade, post-validate, record. ServiceNow opens, updates, and closes the change.</p>
+            <p>F5 came first (API-driven). Then IOS, IOS-XE, NX-OS, Versa, Citrix, Palo Alto, Arista. Shared workflow, vendor modules.</p>
+            <p>I helped lead it: roadmap, PBIs, contractors, and code. Result: millions in contractor and operational effort reduced. <a href="../swim.html">Case study</a>.</p>
           </div>
         </article>
       </div>

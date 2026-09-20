@@ -71,21 +71,10 @@
             </p>
           </header>
           <div class="article-body">
-            <h1>Designing Multi-Vendor Infrastructure Automation</h1>
-            <p>The temptation in network automation is to solve the vendor in front of you. Cisco this quarter, F5 next quarter, a new folder of scripts each time. That is how you get a museum of one-offs.</p>
-            <p>SWIMv2 was an attempt to invert that. The workflow is shared. Vendor behavior is encapsulated. The platform is the product; the SDK is a plugin.</p>
-
-            <h2>Prove the architecture on one platform</h2>
-            <p>F5 was first because it was a manageable environment for establishing patterns: API-driven operations, image copy and staging, HA/active-standby, license and disk checks, image integrity, backups, version verification, logs. Using the F5 SDK instead of living entirely on SSH was part of the point. It forced the system to look like software talking to an API, not a terminal emulator with extra steps.</p>
-            <p>That implementation also became a pattern for refactoring older SSH-based operations into services. You cannot generalize what you have not made explicit.</p>
-
-            <h2>Then add vendors without cloning the product</h2>
-            <p>Cisco IOS, IOS-XE, NX-OS, Versa, Citrix/NetScaler, Palo Alto, Arista — these do not share a command set, an HA model, or an image story. Citrix image copy onto NetScaler SDX guests is a different problem than an F5 upgrade. Authentication failures are not connectivity failures. Guest targeting is not “the same loop with a different prompt.”</p>
-            <p>If the shared layer is “run these CLI lines,” every new vendor explodes the core. If the shared layer is phases — pre-validate, copy, stage, upgrade, post-validate, record — then a new vendor is a new implementation of those phases. That is slower at the start and much cheaper later.</p>
-
-            <h2>Multi-vendor is a product requirement</h2>
-            <p>Enterprises do not have one network OS. A platform that only works for the first vendor is a project. A platform that can take on the next vendor without a rewrite is how you stop paying contractors to reinvent image management every year.</p>
-            <p>The public version of this story is on the <a href="../swim.html">SWIMv2 case study</a>. The internal version is a lot of unglamorous mapping: what “stage” means here, what “healthy” means there, and how you keep those differences out of the operator’s way.</p>
+            <h1>Multi-Vendor Automation</h1>
+            <p>One vendor, one folder of scripts — that is a museum. SWIMv2 inverts it: shared workflow, vendor modules.</p>
+            <p>F5 first. API-driven: copy, stage, HA, license, disk, image checks. Then IOS, IOS-XE, NX-OS, Versa, Citrix, Palo Alto, Arista. Citrix SDX guests are not “F5 with the names changed.”</p>
+            <p>If the core is CLI lines, every vendor explodes it. If the core is phases, a vendor is a new implementation. <a href="../swim.html">Case study</a>.</p>
           </div>
         </article>
       </div>

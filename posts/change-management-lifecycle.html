@@ -71,29 +71,10 @@
             </p>
           </header>
           <div class="article-body">
-            <h1>Automating the Network Change-Management Lifecycle</h1>
-            <p>It is easy to demo a device upgrade. It is harder to demo a clean change record. In a large enterprise, the second one is not paperwork. It is how the operation is allowed to exist.</p>
-            <p>If an engineer still has to open the ticket, paste results, and remember to close it after a 1,000-device window, you have automated the interesting CLI and left the expensive human process intact.</p>
-
-            <h2>The ticket is part of the run</h2>
-            <p>SWIMv2 treats ServiceNow as part of the workflow:</p>
-            <ul>
-              <li>Open the required change.</li>
-              <li>Associate the execution with that change.</li>
-              <li>Update the change as the workflow proceeds.</li>
-              <li>Execute the network operations.</li>
-              <li>Write status and results back to the ticket.</li>
-              <li>Close the change when the run completes.</li>
-            </ul>
-            <p>That list is deliberately boring. Boring is the point. Change management is where enterprises keep their memory of what was supposed to happen. If the automation cannot speak that language, operators will keep a side channel — a spreadsheet, a chat thread, a person who “just knows.”</p>
-
-            <h2>Why this is different from logging</h2>
-            <p>Application logs tell engineers what the software did. Change tickets tell the organization what was authorized, what ran, and whether it is finished. You need both. Logs without a ticket are an internal artifact. A ticket without execution truth is theater.</p>
-            <p>Hooking those together also changes failure handling. A failed subset of devices is not only a red row in a UI. It is a change that should not be blindly closed, and a record someone can hand to the next window.</p>
-
-            <h2>This is still automation engineering</h2>
-            <p>People sometimes treat ITSM integration as glue work beneath “real” device automation. I think that is backwards. The business process is the thing that costs money. Device APIs are how you implement a step. A platform that can open, update, and close the change is automating the operation, not just the box.</p>
-            <p>More of the surrounding architecture is in the <a href="../swim.html">SWIMv2 case study</a> and in <a href="building-swimv2.html">the longer SWIM write-up</a>.</p>
+            <h1>Change Management</h1>
+            <p>Easy to demo an upgrade. Harder to demo a clean ticket. If someone still opens, pastes, and closes after 1,000 devices, you automated the CLI and left the expensive process.</p>
+            <p>SWIM: open the change, attach the run, update it, write results, close it. Logs tell engineers what the software did. Tickets tell the org what was authorized and whether it is finished. You need both.</p>
+            <p><a href="../swim.html">Case study</a> · <a href="building-swimv2.html">SWIM write-up</a></p>
           </div>
         </article>
       </div>
