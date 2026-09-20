@@ -6,10 +6,11 @@ This is a read-only rewrite of the earlier Flask portfolio. There is no login, n
 
 ## Pages
 
-- `index.html` — about, featured projects, latest post, experience
-- `projects.html` — project writeups
+- `index.html` — about, SWIM proof points, featured projects, latest post, experience
+- `swim.html` — SWIMv2 enterprise case study
+- `projects.html` — SWIM, Connect, libraries, earlier work
 - `blog.html` — post list
-- `posts/the-power-of-poetry.html` / `posts/capstone-project-report.html` — posts (PDFs in `assets/`)
+- `posts/` — SWIM write-ups plus older archive posts (PDFs in `assets/`)
 
 ## Run locally
 

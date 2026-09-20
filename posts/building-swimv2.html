@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Building SWIMv2 – Nicholas Spell</title>
+  <meta name="description" content="How SWIMv2 became an enterprise platform for automating network software upgrades across 1,000+ devices and multiple vendors.">
+  <meta name="theme-color" content="#0f0f0f">
+  <link rel="icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../style.css">
+  <script>
+    try {
+      if (localStorage.getItem("theme") === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a class="brand" href="../index.html">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+          Nicholas Spell
+        </a>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark theme">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <a class="nav-link" href="../index.html">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9,22 9,12 15,12 15,22"/>
+          </svg>
+          Home
+        </a>
+        <a class="nav-link active" href="../blog.html">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14,2 14,8 20,8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10,9 9,9 8,9"/>
+          </svg>
+          Blog
+        </a>
+        <a class="nav-link" href="../projects.html">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+          </svg>
+          Projects
+        </a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <div class="content">
+        <article class="article">
+          <header class="article-header">
+            <p class="meta">
+              <time datetime="2026-09-12">September 12, 2026</time>
+              <span>by Nicholas Spell</span>
+            </p>
+          </header>
+          <div class="article-body">
+            <h1>Building SWIMv2: Automating Network Upgrades at Enterprise Scale</h1>
+            <p>The story is not “I wrote a Python tool for upgrading devices.” The story is that I helped build an enterprise automation platform capable of coordinating software upgrades across more than 1,000 network devices during a maintenance window.</p>
+            <p>That distinction is the whole job. A tool runs a command. A platform owns the operational process: who is in the window, whether the box is healthy, whether the image is actually on the device, whether the HA peer is ready, whether the change ticket is open, and what the logs say when something fails at 2 a.m.</p>
+
+            <h2>The expensive problem</h2>
+            <p>Network software upgrades are still one of the most labor-heavy operations in a large enterprise. They consume maintenance windows, contractor hours, and the attention of people who should be designing the next change instead of babysitting the current one. The work is familiar: copy an image, stage it, validate disk and licenses, upgrade, confirm version, handle failover, update the ticket, do it again on the next device.</p>
+            <p>At small scale, a good engineer with a terminal can survive that. At enterprise scale, it becomes a coordination problem. You cannot staff your way through 1,000 devices in a night. You need software that makes the workflow repeatable.</p>
+
+            <h2>Why SWIMv1 was not enough</h2>
+            <p>There was already an older SWIM. It was useful in a Client WAN / Cisco-shaped world, and it leaned on Ansible, YAML, Jinja, and scripting patterns that a lot of network automation careers start with. I came up through that world. It teaches you the devices. It does not give you a product.</p>
+            <p>SWIMv1 was not designed for broad multi-vendor scale. Adding another platform meant stretching a model that assumed too much about Cisco workflows. The interesting work in v2 was not “write more playbooks.” It was treating image management as an application: a web UI, backend services, background orchestration, parallel execution, validation, history, and change management as a first-class part of the run.</p>
+
+            <h2>What we actually built</h2>
+            <p>SWIMv2 is Software Image Management as a full-stack system. Operators work in a web application. The application does not do the long work inside an HTTP request. A backend orchestration layer owns reachability, pre-validation, image operations, upgrades, post-validation, execution state, logging, and results.</p>
+            <p>The workflow is phased on purpose:</p>
+            <ul>
+              <li>Pre-validation — is this device even a candidate?</li>
+              <li>HA preparation — if there is a peer, is it ready?</li>
+              <li>Image copy — get the bits where they need to be.</li>
+              <li>Pre-maintenance — capture state and backups before you touch production.</li>
+              <li>Stage — prepare the image on the target.</li>
+              <li>Upgrade — execute the change.</li>
+              <li>Post-maintenance — prove the version, health, and sync you claimed you would deliver.</li>
+              <li>History — leave a record someone can read tomorrow.</li>
+            </ul>
+            <p>ServiceNow is in that loop. The platform can open the change, associate the execution, update the ticket as the run proceeds, and close it when the workflow completes. Automating CLI without automating the change lifecycle still leaves a pile of human glue.</p>
+
+            <h2>Start with one vendor, then generalize</h2>
+            <p>F5 was the first implementation because it was a manageable place to establish the architecture. The F5 work is API-driven — image upload and copy, staging, upgrade, HA/active-standby handling, license and disk checks, image integrity, backups, version verification — and it became the pattern for treating vendor specifics as modules instead of a new script each time.</p>
+            <p>From there the platform expanded across Cisco IOS, IOS-XE, NX-OS, Versa, Citrix/NetScaler, Palo Alto, and Arista. Citrix, for example, is not “the F5 code with the names changed.” Guest targeting on SDX, authentication versus connectivity failures, and image-copy versus full upgrade are different problems. The reusable piece is the workflow and the orchestration, not the vendor SDK.</p>
+
+            <h2>What I actually did</h2>
+            <p>I did not receive a finished spec and type until the ticket closed. I helped lead SWIM as technical/product work: roadmap, PBIs, breaking large capabilities into executable pieces, coordinating contractor development, working with SMEs, establishing implementation patterns, and contributing to the code. That combination matters. Building software and steering the product are different skills, and this platform needed both.</p>
+            <p>The result is a reusable enterprise platform rather than a collection of one-off scripts. It has run upgrades involving 1,000+ devices in a single night. It reduced millions of dollars in contractor and operational effort — not because a script is clever, but because the operational process itself became software.</p>
+            <p>There is a longer visual walkthrough of the architecture and workflow on the <a href="../swim.html">SWIMv2 case study</a>.</p>
+          </div>
+        </article>
+      </div>
+    </main>
+  </div>
+  <script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Why Network Automation Is More Than Running Scripts – Nicholas Spell</title>
+  <meta name="description" content="Scripts change devices. Platforms own the operational workflow around the change.">
+  <meta name="theme-color" content="#0f0f0f">
+  <link rel="icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../style.css">
+  <script>
+    try {
+      if (localStorage.getItem("theme") === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a class="brand" href="../index.html">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+          Nicholas Spell
+        </a>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark theme">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <a class="nav-link" href="../index.html">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9,22 9,12 15,12 15,22"/>
+          </svg>
+          Home
+        </a>
+        <a class="nav-link active" href="../blog.html">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14,2 14,8 20,8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10,9 9,9 8,9"/>
+          </svg>
+          Blog
+        </a>
+        <a class="nav-link" href="../projects.html">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+          </svg>
+          Projects
+        </a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <div class="content">
+        <article class="article">
+          <header class="article-header">
+            <p class="meta">
+              <time datetime="2026-05-14">May 14, 2026</time>
+              <span>by Nicholas Spell</span>
+            </p>
+          </header>
+          <div class="article-body">
+            <h1>Why Network Automation Is More Than Running Scripts</h1>
+            <p>Most network automation careers start the same way: Python, SSH, a vendor module, maybe Ansible. You get a repetitive task, you encode it, you save someone an afternoon. That is real work. It is also not the ceiling.</p>
+            <p>A script answers “can I make this device do the thing?” A platform answers “can this operation happen the same way on Thursday at 1 a.m., across vendors, with a ticket, a record, and a known failure path?” Those are different jobs.</p>
+
+            <h2>The glue is the work</h2>
+            <p>Device commands are the visible part. Around them sits everything that makes an enterprise change legal and survivable: change records, maintenance windows, HA order, image provenance, backups, who is allowed to run the work, and what you tell the next shift when a subset failed.</p>
+            <p>If you only automate the CLI, people still do the glue by hand. SWIMv2 is interesting to me because it tries to automate a meaningful portion of that surrounding process — including ServiceNow open/update/close — not just the upgrade line.</p>
+
+            <h2>Applications have state; scripts have hope</h2>
+            <p>A script starts, prints, and exits. An application has to remember that 400 devices copied the image, 12 are unreachable, and the change is still open. Background orchestration exists because network operations are long-running and messy. You cannot hide that behind a one-shot job and call it done.</p>
+            <p>Logging and history are part of the product. If the only place the truth lived was a terminal scrollback, you did not build an operational system. You built a faster way to lose context.</p>
+
+            <h2>Connect is the same lesson in a different shape</h2>
+            <p>The Connect platform — a replacement network-access path with Linux services, authentication, session recording, and Splunk — is not an upgrade tool. It is still automation as software: access, identity, recording, observability. Operators do not want another script in their home directory. They want a system they can trust at 2 a.m.</p>
+            <p>That is the shift I care about. Know the network. Then build production software around the expensive operational problems, instead of stopping at a working snippet.</p>
+          </div>
+        </article>
+      </div>
+    </main>
+  </div>
+  <script src="../script.js"></script>
+</body>
+</html>

@@ -260,6 +260,13 @@ li + li {
   margin-bottom: 0.5rem;
 }
 
+.hero-lede {
+  max-width: 38rem;
+  margin: 0 auto 1.25rem;
+  color: var(--muted-foreground);
+  font-size: 1.05rem;
+}
+
 .location {
   color: var(--muted-foreground);
   margin-bottom: 2rem;
@@ -430,6 +437,10 @@ li + li {
   gap: 1.5rem;
 }
 
+.project {
+  scroll-margin-top: 5.5rem;
+}
+
 .project h2 {
   font-size: 1.25rem;
   margin-bottom: 0.75rem;
@@ -540,6 +551,187 @@ li + li {
   border-top: 1px solid var(--border);
 }
 
+/* Proof stats, workflow, architecture — same tokens, extra structure */
+
+.proof {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0 0 var(--space-2xl);
+}
+
+.proof-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  padding: 1.25rem 1rem;
+  text-align: center;
+}
+
+.proof-item strong {
+  display: block;
+  font-size: 1.35rem;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.35rem;
+}
+
+.proof-item span {
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+}
+
+.project-kicker {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  margin: 0 0 0.4rem;
+}
+
+.teaser.featured h3 {
+  font-size: 1.2rem;
+}
+
+.teaser.featured p {
+  margin-top: 0.35rem;
+}
+
+.vendors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0.75rem 0 0;
+}
+
+.vendor {
+  display: inline-block;
+  font-size: 0.8125rem;
+  padding: 0.28rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted-foreground);
+  background: var(--muted);
+}
+
+.workflow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin: 1rem 0 0;
+}
+
+.workflow-step {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.85rem 0.8rem;
+  background: var(--muted);
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+}
+
+.workflow-step strong {
+  display: block;
+  color: var(--foreground);
+  font-size: 0.875rem;
+  margin-bottom: 0.3rem;
+}
+
+.arch {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.55rem;
+  margin: 1rem 0 0.5rem;
+}
+
+.arch-node {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.65rem 0.9rem;
+  background: var(--muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.arch-arrow {
+  color: var(--muted-foreground);
+  font-size: 0.9rem;
+}
+
+.challenges {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.challenge {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+  font-size: 0.9rem;
+  background: var(--card);
+}
+
+.challenge strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.challenge span {
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.split h3 {
+  margin-bottom: 0.5rem;
+}
+
+.split p {
+  margin: 0;
+  color: var(--muted-foreground);
+  font-size: 0.9375rem;
+}
+
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  margin: 2.25rem 0 1rem;
+}
+
+.article-body h2 {
+  margin: 2rem 0 0.75rem;
+  font-size: 1.25rem;
+}
+
+.article-body h3 {
+  margin: 1.5rem 0 0.5rem;
+}
+
+.article-body ul {
+  margin: 0 0 1.25rem;
+  font-size: 1.05rem;
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
 /* Wide desktop: fill the main column */
 
 @media (min-width: 1400px) {
@@ -647,6 +839,19 @@ li + li {
     max-width: none;
   }
 
+  .proof {
+    grid-template-columns: 1fr;
+  }
+
+  .workflow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .challenges,
+  .split {
+    grid-template-columns: 1fr;
+  }
+
   .socials {
     gap: 0.75rem;
   }
@@ -684,5 +889,13 @@ li + li {
 
   .attachment .btn {
     width: 100%;
+  }
+
+  .workflow {
+    grid-template-columns: 1fr;
+  }
+
+  .proof-item strong {
+    font-size: 1.2rem;
   }
 }

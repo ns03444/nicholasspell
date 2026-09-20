@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Projects – Nicholas Spell</title>
-  <meta name="description" content="Projects by Nicholas Spell: network automation utilities, Ansible, Flask, and a Django content aggregator.">
+  <meta name="description" content="Projects by Nicholas Spell: SWIMv2 enterprise upgrade automation, Connect network access, automation libraries, and earlier software work.">
   <meta name="theme-color" content="#0f0f0f">
   <link rel="icon" href="assets/favicon.ico">
   <link rel="stylesheet" href="style.css">
@@ -63,27 +63,56 @@
 
     <main class="main">
       <div class="content">
-        <h1 class="page-title">My Projects</h1>
+        <h1 class="page-title">Projects</h1>
+        <p class="page-lede">Production systems first. Earlier personal work is at the bottom.</p>
 
         <div class="projects">
+          <article class="card project" id="swim">
+            <p class="project-kicker">Enterprise case study</p>
+            <h2><a href="swim.html">SWIMv2 — Enterprise Network Software Image Management</a></h2>
+            <p>An enterprise full-stack automation platform for managing and executing network software image upgrades across multiple vendors at large scale. SWIM coordinates image copy, staging, validation, HA-aware upgrades, logging, and ServiceNow change management — including runs of 1,000+ devices in a single maintenance window.</p>
+            <p>I helped lead the product and engineering direction: roadmap, PBIs, contractor coordination, implementation patterns, and direct contributions to the codebase. F5 established the API-driven patterns; the platform then expanded to Cisco IOS / IOS-XE / NX-OS, Citrix/NetScaler, Palo Alto, Arista, and Versa.</p>
+            <div class="cta-row">
+              <a class="btn" href="swim.html">Read the case study</a>
+            </div>
+          </article>
+
+          <article class="card project" id="connect">
+            <p class="project-kicker">Enterprise platform</p>
+            <h2>Connect — Enterprise SSH / Network Access Platform</h2>
+            <p>A replacement for an older network-access path (HPNA), built as a set of Linux/systemd components rather than a single script. Connect combines an SSH server/socket, secrets handling, an interactive shell, TACACS+/ClearPass authentication, PTY session recording, messaging/streaming, and Splunk integration.</p>
+            <p>The broader story: a network-access platform that operators actually use — authentication, interactive terminal access, recording, and observability — not just a jump host with extra steps.</p>
+          </article>
+
+          <article class="card project" id="libraries">
+            <p class="project-kicker">Shared software</p>
+            <h2>Network Automation Libraries / SDK work</h2>
+            <p>Python libraries and SDKs for device operations, orchestration, and reusable automation patterns. This is the layer underneath product work: common interfaces for reachability, API-driven vendor operations, and the pieces that keep SWIM and related tools from becoming a pile of copy-pasted scripts.</p>
+            <p>Earlier in the same vein: SD-WAN orchestration helpers and shared modules that started as task automation and later informed how SWIMv2 encapsulates vendor behavior.</p>
+          </article>
+
+          <article class="card project" id="confluence">
+            <p class="project-kicker">Internal tooling</p>
+            <h2>Markdown / Confluence Automation</h2>
+            <p>A Docker/Python publisher that turns markdown into Confluence pages so documentation can live in git and still land where operators read it. Related work includes a network diagram generator for automated doc publishing. Small compared with SWIM — useful as evidence that the job is software around operations, not only device upgrades.</p>
+          </article>
+        </div>
+
+        <p class="section-label">Earlier projects</p>
+        <div class="projects">
           <article class="card project">
-            <h2><a href="https://github.com">Python Package: Network Automation Utilities</a></h2>
-            <p>There are many Python packages available that can be used to aid network automation developers in their work. One such package is the "netutils" package, which contains a variety of utilities that can be used to automate various network tasks. This package is designed to make it easy for developers to access and use common network tools and protocols, such as ping, traceroute, SSH, and SNMP, within their Python scripts. With the "netutils" package, developers can easily write scripts to automate tasks such as network configuration, monitoring, and troubleshooting. Whether you are a beginner or an experienced network automation developer, the "netutils" package can help you streamline your workflow and increase your productivity.</p>
+            <h2>Django Application: Content Aggregator</h2>
+            <p>College capstone: a Django site that aggregated technology-related market news and performance data, with pandas/Bokeh charts and a scheduled refresh. It is how I learned to ship a full web app. It is not the center of the portfolio anymore.</p>
           </article>
 
           <article class="card project">
-            <h2><a href="https://github.com">Ansible Development</a></h2>
-            <p>Ansible is a powerful open-source tool that can be used for automating various IT tasks, including network configuration and management. With Ansible, you can easily automate the deployment, configuration, and management of your network infrastructure, saving time and reducing the risk of errors. If you are new to ansible and are interested in learning how to use it for network automation, this tutorial will provide you with a solid foundation. You will learn the basics of ansible, including how to install and set up your environment, how to write and execute ansible playbooks, and how to use ansible modules to automate common network tasks. By the end of this tutorial, you will have a good understanding of how to use ansible for network automation and be able to start automating your own tasks.</p>
+            <h2>Flask Application: Blog Website</h2>
+            <p>A Flask app with authentication, a database, file uploads, and templated posts. The current public site is a static rewrite of that idea — no login, no editor — because the work that matters now is the enterprise platforms, not a CMS.</p>
           </article>
 
           <article class="card project">
-            <h2><a href="https://github.com">Flask Application: Blog Website</a></h2>
-            <p>Recently, I developed a Flask application that includes various features such as user authentication, database integration, file upload, and rendering templates. The app is configured to use a database (SQLite), and it has defined models for users and blog posts, which are connected through a relationship. The code also includes form classes for handling user input and validation, as well as routes for handling HTTP requests and rendering templates. Finally, the code includes a file upload function that allows users to upload files with certain allowed extensions.</p>
-          </article>
-
-          <article class="card project">
-            <h2><a href="https://github.com">Django Application: Content Aggregator</a></h2>
-            <p>Developed a “content aggregator” for technology related stock market news and performance data which was deployed to the cloud using Git and Python Anywhere that dynamically updates once every hour. I began by using the Beautiful Soup (bs4) and Requests dependencies to web-scrape unformatted data from various websites. Then, the front end was developed using the Django frontend framework along with Bootstrap HTML and CSS to present my scraped content, along with an SQLite3 backend database for handling, serving, updating, etc. the content of the site. Next, I manipulated/created calculated columns in a pandas data-frame of open/close prices for the S&amp;P 500 to create interactive candlestick charts with Bokeh embedded into a Bootstrap template. Finally, I conducted an in-depth financial analysis of the 3 largest wireless network carriers in America by using the yFinance and Matplotlib python libraries. The yFinance library was implemented to collect the close price, volume, volatility, market capitalization, Beta, price-to-earnings ratio, dividend yield. Then, I integrated the data into a single data-frame and used Matplotlib to create various visualizations (line graphs, bar charts, histograms). Last, I used the visualizations to provide an educated conclusion (not investment advice).</p>
+            <h2>Python Package: Network Automation Utilities</h2>
+            <p>Early toolkit work around common network tasks. The interesting continuation of that idea is the internal libraries behind SWIM and Connect, not a generic utilities package.</p>
           </article>
         </div>
       </div>

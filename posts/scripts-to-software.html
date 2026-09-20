@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>From Network Scripts to Production Software – Nicholas Spell</title>
+  <meta name="description" content="The career shift from Ansible-era network scripting to building automation products like SWIMv2.">
+  <meta name="theme-color" content="#0f0f0f">
+  <link rel="icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../style.css">
+  <script>
+    try {
+      if (localStorage.getItem("theme") === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a class="brand" href="../index.html">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+          Nicholas Spell
+        </a>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark theme">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <a class="nav-link" href="../index.html">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9,22 9,12 15,12 15,22"/>
+          </svg>
+          Home
+        </a>
+        <a class="nav-link active" href="../blog.html">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14,2 14,8 20,8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10,9 9,9 8,9"/>
+          </svg>
+          Blog
+        </a>
+        <a class="nav-link" href="../projects.html">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+          </svg>
+          Projects
+        </a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <div class="content">
+        <article class="article">
+          <header class="article-header">
+            <p class="meta">
+              <time datetime="2026-02-04">February 04, 2026</time>
+              <span>by Nicholas Spell</span>
+            </p>
+          </header>
+          <div class="article-body">
+            <h1>From Network Scripts to Production Software</h1>
+            <p>I still know Ansible. I still know how to sit on a device and make it do the right thing. That is not what I want a visitor to this site to think I do all day.</p>
+            <p>The useful career story is the move from “network scripting” to “building automation products.” SWIMv1 to SWIMv2 is the cleanest example I have of that move.</p>
+
+            <h2>What the first version taught me</h2>
+            <p>SWIMv1 lived close to Client WAN and Cisco workflows. Playbooks, templates, scripts — the standard toolkit. It automated real work. It also encoded too many assumptions about one domain into the shape of the tool. When the requirement became multi-vendor scale, the old shape fought back.</p>
+            <p>That phase was not wasted. You cannot design a platform for operations you have never done by hand or by playbook. You can get stuck there, though, and keep adding YAML until the system is unownable.</p>
+
+            <h2>What the second version required</h2>
+            <p>SWIMv2 needed the boring virtues of application software: a UI people can use, backend services, APIs, background jobs, parallel execution, validation, observability, and integration with the systems the enterprise already uses to approve work. It needed a roadmap and PBIs, not a folder of one-off jobs. It needed someone to sit between stakeholders, contractors, and the codebase and keep the architecture from dissolving into special cases.</p>
+            <p>That is a different job description than “writes automation.” It is closer to software-oriented infrastructure engineering. You still need the network depth. You also need to think in interfaces, state, and products.</p>
+
+            <h2>How to tell the difference</h2>
+            <p>If the artifact is a script, the user is you. If the artifact is a platform, the users are operators who were not in the design review. They need a workflow, a ticket, a log, and a way to run 1,000 devices without inventing a process that night.</p>
+            <p>I do not claim I built every line. I do claim I helped lead the direction and I write the software. Both halves are the point. The rest of this site — Connect, libraries, even the older Django and Flask work — is evidence of the same trajectory, with SWIM as the proof that it reached production scale.</p>
+          </div>
+        </article>
+      </div>
+    </main>
+  </div>
+  <script src="../script.js"></script>
+</body>
+</html>
