@@ -556,40 +556,7 @@ li + li {
   border-top: 1px solid var(--border);
 }
 
-/* Proof stats, workflow, architecture — same tokens, extra structure */
-
-.proof {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.75rem;
-}
-
-.proof-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--card);
-  box-shadow: var(--shadow);
-  padding: 1.15rem 1.25rem;
-  text-align: left;
-}
-
-.proof-item strong {
-  display: block;
-  font-size: 1.5rem;
-  font-weight: 600;
-  letter-spacing: -0.04em;
-  line-height: 1.15;
-}
-
-.proof-item span {
-  display: block;
-  color: var(--muted-foreground);
-  font-size: 0.8125rem;
-  line-height: 1.4;
-}
+/* Workflow, architecture, vendors */
 
 .project-kicker {
   font-size: 0.75rem;
@@ -838,10 +805,6 @@ li + li {
     max-width: none;
   }
 
-  .proof {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
   .workflow {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -892,13 +855,5 @@ li + li {
 
   .workflow {
     grid-template-columns: 1fr;
-  }
-
-  .proof {
-    grid-template-columns: 1fr;
-  }
-
-  .proof-item strong {
-    font-size: 1.25rem;
   }
 }
